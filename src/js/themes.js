@@ -4,19 +4,18 @@ const Theme = {
 };
 
 const refs = {
-  toggleTheme: document.querySelector("#theme-switch-toggle"),
-  switchToggle: document.querySelector(".theme-switch__toggle"),
+  switcher: document.querySelector(".theme-switch__toggle"),
   body: document.querySelector("body"),
 };
 
 setTheme();
-refs.toggleTheme.addEventListener("change", onSetTheme);
+refs.switcher.addEventListener("change", onSetTheme);
 
 function setTheme() {
   const savedItem = localStorage.getItem("theme");
 
   if (savedItem) refs.body.classList.add(savedItem);
-  if (savedItem === Theme.DARK) refs.switchToggle.checked = true;
+  if (savedItem === Theme.DARK) refs.switcher.checked = true;
 }
 
 function onSetTheme() {
