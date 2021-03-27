@@ -21,20 +21,14 @@ function setTheme() {
 function onSetTheme() {
   const savedItem = localStorage.getItem("theme");
 
-  if (!savedItem || (savedItem && savedItem === Theme.LIGHT)) setDarkTheme();
-  else setLightTheme();
+  if (!savedItem || (savedItem && savedItem === Theme.LIGHT))
+    setDarkOrLightTheme(Theme.DARK, Theme.LIGHT);
+  else setDarkOrLightTheme(Theme.LIGHT, Theme.DARK);
 }
 
-function setDarkTheme() {
-  refs.body.classList.add(Theme.DARK);
-  refs.body.classList.remove(Theme.LIGHT);
+function setDarkOrLightTheme(set, remove) {
+  refs.body.classList.add(set);
+  refs.body.classList.remove(remove);
 
-  localStorage.setItem("theme", Theme.DARK);
-}
-
-function setLightTheme() {
-  refs.body.classList.add(Theme.LIGHT);
-  refs.body.classList.remove(Theme.DARK);
-
-  localStorage.setItem("theme", Theme.LIGHT);
+  localStorage.setItem("theme", set);
 }
